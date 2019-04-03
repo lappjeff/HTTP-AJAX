@@ -3,6 +3,7 @@ import './App.css';
 
 import axios from 'axios'
 
+import FriendsList from './components/FriendsList'
 const App = props => {
 
   const [users, setUsers] = useState()
@@ -26,7 +27,7 @@ const App = props => {
 
   return (
     <div className="App">
-      
+      <FriendsList friends={users}/>
     </div>
   );
 
