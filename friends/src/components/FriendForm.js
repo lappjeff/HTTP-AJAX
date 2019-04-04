@@ -3,8 +3,9 @@ import React from 'react'
 import { UserForm, UserFormInput, UserFormBtn } from './styles/S_FriendForm'
 
 const FriendForm = props => {
-  const {handleName, handleAge, handleEmail, submitFriend } = props.changeHandlers
+  const {handleName, handleAge, handleEmail, submitFriend, removeFriend} = props.changeHandlers
   const { age, name, email } = props.values
+
   return (
     <UserForm>
       <UserFormInput
@@ -29,7 +30,10 @@ const FriendForm = props => {
 
       />
 
-      <UserFormBtn onClick={submitFriend} type='submit'>Add Friend</UserFormBtn>
+      {props.buttonText === 'Update Friend' ?
+      <UserFormBtn onClick={props.updateFriend(props.id)}>{props.buttonText}</UserFormBtn>
+      : <UserFormBtn onClick={submitFriend}>{props.buttonText}</UserFormBtn>}
+
     </UserForm>
   )
 

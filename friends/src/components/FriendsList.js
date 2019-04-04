@@ -10,16 +10,20 @@ const FriendsList = props => {
 
   return (
     <ListWrapper>
-
-      <FriendForm
-        changeHandlers={changeHandlers}
-        values={values}
-      />
-
       <List>
+        <FriendForm
+          changeHandlers={changeHandlers}
+          values={values}
+          buttonText='Add Friend'
+        />
         {friends.map(friend => {
           return (
-            <Friend key={friend.id} user={friend} removeFriend={changeHandlers.removeFriend}/>
+            <Friend
+              key={friend.id} user={friend} 
+              removeFriend={changeHandlers.removeFriend}
+              values={values}
+              changeHandlers={changeHandlers}
+            />
           )
         })}
       </List>

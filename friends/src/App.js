@@ -32,7 +32,6 @@ const App = props => {
   }
 
   const removeFriend = id => {
-    console.log('test')
     axios.delete(`http://localhost:5000/friends/${id}`)
     .then(res => {
       setUsers(res.data)
@@ -48,26 +47,31 @@ const App = props => {
       name: name,
       age: age,
       email: email,
-      id: Math.floor(Math.random() * 200)
+      id: Math.random(10, 500)
     }
 
-    axios.post('http://localhost:5000/friends', newUser)
-    .then(res => setUsers(res.data))
-    .catch(err => 'user could not be added')
+    if (age && name && email) {
+      axios.post('http://localhost:5000/friends', newUser)
+      .then(res => setUsers(res.data))
+      .catch(err => 'user could not be added')
 
+      setAge('')
+      setName('')
+      setEmail('')
+    } else {
+      alert('Make sure you have all fields filled out')
+    }
 
-    setAge('')
-    setName('')
-    setEmail('')
     event.preventDefault()
   }
+
 
   const changeHandlers = {
     handleAge: handleAge,
     handleName: handleName,
     handleEmail: handleEmail,
     submitFriend: submitFriend,
-    removeFriend: removeFriend
+    removeFriend: removeFriend,
   }
 
   if (!users) {
