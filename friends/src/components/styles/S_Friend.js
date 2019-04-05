@@ -9,6 +9,10 @@ const FriendItem = styled.li `
   display: grid;
   grid-template-columns: 2fr repeat(2, 1fr);
   font-size: 16px;
+
+  a {
+    cursor: pointer;
+  }
 `
 
 
